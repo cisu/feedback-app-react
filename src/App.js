@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Headers from './components/Headers';
 import FeedbackList from './components/FeedbackList';
+import FeedbackStats from './components/FeedbackStats';
 import FeedbackData from './data/FeedbackData';
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
 
   const deleteFeedback = id => {
     if (window.confirm('Are you sure you want to delete?')) {
-      // filter is going to return an array minus the one we're deleting 
+      // filter is going to return an array minus the one we're deleting
       setFeedback(feedback.filter(item => item.id !== id));
     }
   };
@@ -17,6 +18,7 @@ function App() {
     <>
       <Headers />
       <div className='container'>
+        <FeedbackStats feedback={feedback} />
         <FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
       </div>
     </>
